@@ -1,6 +1,9 @@
 package guru.springframework.sfgpetclinic.model;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,10 +12,22 @@ import java.util.Set;
 /**
  * Created by Xinjie on 2018/11/19 8:46 PM.
  */
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
-@Table(name = "Owners")
+@Table(name = "owners")
 public class Owner extends Person {
+
+    @Builder
+    public Owner(Long id, String firstName, String lastName, String address, String city,
+                 String telephone, Set<Pet> pets) {
+        super(id, firstName, lastName);
+        this.address = address;
+        this.city = city;
+        this.telephone = telephone;
+        this.pets = pets;
+    }
 
     @Column(name = "address")
     private String address;
@@ -27,3 +42,4 @@ public class Owner extends Person {
     private Set<Pet> pets = new HashSet<>();
 
 }
+

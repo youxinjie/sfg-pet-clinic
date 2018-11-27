@@ -1,6 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,7 +10,11 @@ import java.util.Set;
 /**
  * Created by Xinjie on 2018/11/19 8:47 PM.
  */
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {
